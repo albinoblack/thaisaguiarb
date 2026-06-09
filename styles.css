@@ -1,17 +1,15 @@
 :root {
   --navy: #243563;
-  --navy-deep: #1d2b52;
-  --navy-soft: #314677;
-  --light-blue: #dce8f1;
-  --light-blue-2: #eef4f8;
+  --navy-deep: #1f315d;
+  --light-blue: #dfe9f1;
   --white: #ffffff;
   --text-soft: rgba(255, 255, 255, 0.82);
   --text-muted: rgba(255, 255, 255, 0.66);
   --red: #b64642;
   --yellow: #dfbd59;
   --green: #7da773;
-  --shadow: 0 28px 80px rgba(24, 34, 61, 0.18);
-  --radius: 26px;
+  --shadow: 0 24px 54px rgba(24, 34, 61, 0.16);
+  --radius: 10px;
 }
 
 * {
@@ -27,8 +25,7 @@ body {
   margin: 0;
   color: var(--white);
   background:
-    radial-gradient(circle at 12% 18%, rgba(223, 189, 89, 0.13), transparent 28%),
-    linear-gradient(135deg, #f7f4ee 0%, #e8eef3 100%);
+    linear-gradient(135deg, #f4f0e8 0%, #e7edf2 100%);
   font-family:
     Inter, Poppins, Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -43,16 +40,18 @@ a {
 .page-shell {
   display: grid;
   min-height: 100vh;
-  padding: clamp(18px, 4vw, 44px);
+  padding: clamp(14px, 3vw, 34px);
   place-items: center;
 }
 
 .profile-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(360px, 0.86fr) 9px minmax(360px, 1fr);
-  width: min(100%, 1120px);
-  min-height: min(760px, calc(100vh - 88px));
+  grid-template-columns: minmax(390px, 0.88fr) 10px minmax(480px, 1.12fr);
+  width: min(100%, 1180px);
+  aspect-ratio: 16 / 9;
+  min-height: 620px;
+  max-height: calc(100vh - 68px);
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--navy);
@@ -64,21 +63,20 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 44px;
-  padding: clamp(34px, 5.4vw, 68px);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 38%),
-    linear-gradient(180deg, var(--navy-soft), var(--navy-deep));
+  gap: 34px;
+  padding: clamp(38px, 4.8vw, 58px);
+  background: var(--navy);
 }
 
 .doctor-heading {
   max-width: 430px;
+  padding-top: 4px;
 }
 
 .doctor-kicker {
-  margin: 0 0 6px;
-  font-size: clamp(1.5rem, 2.7vw, 2.2rem);
-  font-weight: 800;
+  margin: 0 0 2px;
+  font-size: clamp(1.58rem, 2.4vw, 2.12rem);
+  font-weight: 750;
   letter-spacing: 0;
 }
 
@@ -91,8 +89,8 @@ p {
 h1 {
   margin-bottom: 10px;
   color: var(--text-soft);
-  font-size: clamp(1.1rem, 1.6vw, 1.34rem);
-  font-weight: 500;
+  font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+  font-weight: 450;
   letter-spacing: 0;
 }
 
@@ -104,33 +102,33 @@ h1 {
 
 .qualification-list {
   display: grid;
-  gap: clamp(18px, 2.6vw, 26px);
+  gap: clamp(15px, 1.8vw, 22px);
   max-width: 520px;
 }
 
 .qualification-item {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 21px minmax(0, 1fr);
+  gap: 13px;
   align-items: start;
 }
 
 .star-icon {
   display: inline-grid;
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   place-items: center;
   color: var(--yellow);
-  font-size: 0.92rem;
+  font-size: 0.8rem;
   line-height: 1;
   transform: translateY(2px);
 }
 
 .qualification-item h2 {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   color: var(--white);
-  font-size: clamp(1rem, 1.3vw, 1.13rem);
-  font-weight: 800;
+  font-size: clamp(0.98rem, 1.14vw, 1.08rem);
+  font-weight: 760;
   line-height: 1.25;
   letter-spacing: 0;
 }
@@ -138,7 +136,7 @@ h1 {
 .qualification-item p {
   margin-bottom: 0;
   color: var(--text-soft);
-  font-size: clamp(0.94rem, 1vw, 1rem);
+  font-size: clamp(0.9rem, 0.96vw, 0.98rem);
 }
 
 .info-footer {
@@ -151,13 +149,13 @@ h1 {
 .logo-slot {
   display: inline-grid;
   flex: 0 0 auto;
-  width: 70px;
-  height: 70px;
+  width: 64px;
+  height: 64px;
   overflow: hidden;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .logo-slot img {
@@ -186,10 +184,10 @@ h1 {
 
 .btn {
   display: inline-flex;
-  min-height: 46px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 19px;
   border: 1px solid transparent;
   border-radius: 999px;
   font-size: 0.94rem;
@@ -219,7 +217,7 @@ h1 {
 .color-divider {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  width: 9px;
+  width: 10px;
 }
 
 .color-divider span {
@@ -240,19 +238,15 @@ h1 {
 
 .photo-panel {
   position: relative;
-  min-height: 620px;
+  min-height: 100%;
   overflow: hidden;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(220, 232, 241, 0.86)),
-    var(--light-blue);
+  background: var(--light-blue);
 }
 
 .photo-wash {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(36, 53, 99, 0.08), transparent 28%),
-    radial-gradient(circle at 78% 16%, rgba(255, 255, 255, 0.54), transparent 32%);
+  background: linear-gradient(90deg, rgba(36, 53, 99, 0.1), transparent 26%);
   pointer-events: none;
   z-index: 1;
 }
@@ -263,8 +257,8 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 24%;
-  transform: scale(1.02);
+  object-position: 42% 50%;
+  transform: scale(1.01);
 }
 
 .doctor-photo:not([src]),
@@ -275,7 +269,7 @@ h1 {
 .photo-panel::after {
   position: absolute;
   inset: auto 0 0;
-  height: 28%;
+  height: 22%;
   content: "";
   background: linear-gradient(180deg, transparent, rgba(36, 53, 99, 0.12));
   pointer-events: none;
@@ -290,13 +284,15 @@ h1 {
 
   .profile-card {
     grid-template-columns: 1fr;
+    aspect-ratio: auto;
     min-height: auto;
     border-radius: 22px;
+    max-height: none;
   }
 
   .photo-panel {
     order: 1;
-    min-height: clamp(360px, 82vw, 560px);
+    min-height: clamp(390px, 78vw, 560px);
   }
 
   .color-divider {

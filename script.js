@@ -2,7 +2,7 @@ const SITE_CONFIG = {
   whatsappNumber: "5500000000000",
   whatsappMessage: "Olá, Dra. Thaís Aguiar. Gostaria de agendar uma consulta.",
   instagramUrl: "https://www.instagram.com/",
-  doctorPhotoUrl: "assets/img/dra-thais-consultorio.jpg",
+  doctorPhotoUrl: "assets/img/dra-thais-rinologia.jpg",
   logoUrl: "",
   crmRqe: ""
 };
