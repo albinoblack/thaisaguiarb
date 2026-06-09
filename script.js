@@ -1,20 +1,19 @@
 const SITE_CONFIG = {
   whatsappNumber: "5500000000000",
-  whatsappMessage:
-    "Olá, Dra. Thaís Aguiar. Gostaria de agendar uma consulta.",
+  whatsappMessage: "Olá, Dra. Thaís Aguiar. Gostaria de agendar uma consulta.",
   instagramUrl: "https://www.instagram.com/",
-  address: "Endereço a definir",
-  photoUrl: "assets/img/dra-thais-consultorio.jpg"
+  doctorPhotoUrl: "assets/img/dra-thais-consultorio.jpg",
+  logoUrl: "",
+  crmRqe: ""
 };
 
-const header = document.querySelector(".site-header");
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
-const whatsappLinks = document.querySelectorAll(".js-whatsapp");
+const whatsappLink = document.querySelector(".js-whatsapp");
 const instagramLink = document.querySelector(".js-instagram");
-const addressNode = document.querySelector(".js-address");
-const doctorPhoto = document.querySelector(".doctor-photo");
-const mosaicPhotos = document.querySelectorAll(".mosaic-item img");
+const doctorPhoto = document.querySelector(".js-doctor-photo");
+const logo = document.querySelector(".js-logo");
+const logoSlot = document.querySelector(".logo-slot");
+const logoLink = document.querySelector(".js-logo-link");
+const credentials = document.querySelector(".js-credentials");
 
 function buildWhatsappUrl() {
   const phone = SITE_CONFIG.whatsappNumber.replace(/\D/g, "");
@@ -22,78 +21,44 @@ function buildWhatsappUrl() {
   return `https://wa.me/${phone}?text=${message}`;
 }
 
-function applySiteConfig() {
-  const whatsappUrl = buildWhatsappUrl();
+function setImageWithFallback(image, url, onLoad) {
+  if (!image || !url) return;
 
-  whatsappLinks.forEach((link) => {
-    link.href = whatsappUrl;
+  image.addEventListener("load", () => {
+    if (typeof onLoad === "function") onLoad();
   });
+
+  image.addEventListener("error", () => {
+    image.removeAttribute("src");
+  });
+
+  image.src = url;
+}
+
+function applyConfig() {
+  if (whatsappLink) {
+    whatsappLink.href = buildWhatsappUrl();
+  }
 
   if (instagramLink) {
     instagramLink.href = SITE_CONFIG.instagramUrl;
   }
 
-  if (addressNode) {
-    addressNode.textContent = SITE_CONFIG.address;
+  if (logoLink) {
+    logoLink.href = SITE_CONFIG.instagramUrl;
   }
 
-  if (doctorPhoto && SITE_CONFIG.photoUrl) {
-    doctorPhoto.addEventListener("load", () => {
-      doctorPhoto.classList.add("has-photo");
-    });
-
-    doctorPhoto.addEventListener("error", () => {
-      doctorPhoto.removeAttribute("src");
-      doctorPhoto.classList.remove("has-photo");
-    });
-
-    doctorPhoto.src = SITE_CONFIG.photoUrl;
+  if (credentials && SITE_CONFIG.crmRqe.trim()) {
+    credentials.textContent = SITE_CONFIG.crmRqe;
+    credentials.hidden = false;
   }
-}
 
-function updateHeaderState() {
-  header.classList.toggle("is-scrolled", window.scrollY > 12);
-}
+  setImageWithFallback(doctorPhoto, SITE_CONFIG.doctorPhotoUrl);
 
-function closeMenu() {
-  document.body.classList.remove("menu-open");
-  navMenu.classList.remove("is-open");
-  menuToggle.setAttribute("aria-expanded", "false");
-}
-
-menuToggle.addEventListener("click", () => {
-  const isOpen = navMenu.classList.toggle("is-open");
-  document.body.classList.toggle("menu-open", isOpen);
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-navMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
-
-window.addEventListener("scroll", updateHeaderState, { passive: true });
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.16 }
-);
-
-document.querySelectorAll(".reveal").forEach((element) => {
-  revealObserver.observe(element);
-});
-
-mosaicPhotos.forEach((photo) => {
-  photo.addEventListener("error", () => {
-    photo.removeAttribute("src");
+  setImageWithFallback(logo, SITE_CONFIG.logoUrl, () => {
+    logo.hidden = false;
+    logoSlot.classList.add("has-logo");
   });
-});
+}
 
-applySiteConfig();
-updateHeaderState();
+applyConfig();
