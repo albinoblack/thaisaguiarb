@@ -4,7 +4,7 @@ const SITE_CONFIG = {
     "Olá, Dra. Thaís Aguiar. Gostaria de agendar uma consulta.",
   instagramUrl: "https://www.instagram.com/",
   address: "Endereço a definir",
-  photoUrl: "assets/img/dra-thais-hero.jpg"
+  photoUrl: "assets/img/dra-thais-consultorio.jpg"
 };
 
 const header = document.querySelector(".site-header");
