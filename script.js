@@ -2,18 +2,18 @@ const SITE_CONFIG = {
   whatsappNumber: "5500000000000",
   whatsappMessage: "Olá, Dra. Thaís Aguiar. Gostaria de agendar uma consulta.",
   instagramUrl: "https://www.instagram.com/",
-  doctorPhotoUrl: "assets/img/dra-thais-consultorio.jpg",
+  heroPhotoUrl: "assets/img/dra-thais-consultorio.jpg",
   logoUrl: "",
   crmRqe: ""
 };
 
-const whatsappLink = document.querySelector(".js-whatsapp");
-const instagramLink = document.querySelector(".js-instagram");
-const doctorPhoto = document.querySelector(".js-doctor-photo");
-const logo = document.querySelector(".js-logo");
-const logoSlot = document.querySelector(".logo-slot");
-const logoLink = document.querySelector(".js-logo-link");
-const credentials = document.querySelector(".js-credentials");
+const header = document.querySelector(".site-header");
+const menuButton = document.querySelector(".menu-button");
+const menu = document.querySelector(".menu");
+const whatsappLinks = document.querySelectorAll(".js-whatsapp");
+const instagramLinks = document.querySelectorAll(".js-instagram");
+const heroPhoto = document.querySelector(".js-hero-photo");
+const credentialNodes = document.querySelectorAll(".js-credentials");
 
 function buildWhatsappUrl() {
   const phone = SITE_CONFIG.whatsappNumber.replace(/\D/g, "");
@@ -21,44 +21,65 @@ function buildWhatsappUrl() {
   return `https://wa.me/${phone}?text=${message}`;
 }
 
-function setImageWithFallback(image, url, onLoad) {
-  if (!image || !url) return;
-
-  image.addEventListener("load", () => {
-    if (typeof onLoad === "function") onLoad();
-  });
-
-  image.addEventListener("error", () => {
-    image.removeAttribute("src");
-  });
-
-  image.src = url;
-}
-
 function applyConfig() {
-  if (whatsappLink) {
-    whatsappLink.href = buildWhatsappUrl();
+  whatsappLinks.forEach((link) => {
+    link.href = buildWhatsappUrl();
+  });
+
+  instagramLinks.forEach((link) => {
+    link.href = SITE_CONFIG.instagramUrl;
+  });
+
+  if (heroPhoto && SITE_CONFIG.heroPhotoUrl) {
+    heroPhoto.addEventListener("error", () => {
+      heroPhoto.removeAttribute("src");
+    });
+    heroPhoto.src = SITE_CONFIG.heroPhotoUrl;
   }
 
-  if (instagramLink) {
-    instagramLink.href = SITE_CONFIG.instagramUrl;
-  }
-
-  if (logoLink) {
-    logoLink.href = SITE_CONFIG.instagramUrl;
-  }
-
-  if (credentials && SITE_CONFIG.crmRqe.trim()) {
-    credentials.textContent = SITE_CONFIG.crmRqe;
-    credentials.hidden = false;
-  }
-
-  setImageWithFallback(doctorPhoto, SITE_CONFIG.doctorPhotoUrl);
-
-  setImageWithFallback(logo, SITE_CONFIG.logoUrl, () => {
-    logo.hidden = false;
-    logoSlot.classList.add("has-logo");
+  credentialNodes.forEach((node) => {
+    node.textContent = SITE_CONFIG.crmRqe;
+    node.hidden = !SITE_CONFIG.crmRqe.trim();
   });
 }
+
+function updateHeader() {
+  header.classList.toggle("is-scrolled", window.scrollY > 10);
+}
+
+function closeMenu() {
+  document.body.classList.remove("menu-open");
+  menu.classList.remove("is-open");
+  menuButton.setAttribute("aria-expanded", "false");
+}
+
+menuButton.addEventListener("click", () => {
+  const isOpen = menu.classList.toggle("is-open");
+  document.body.classList.toggle("menu-open", isOpen);
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
+menu.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.14 }
+);
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  revealObserver.observe(element);
+});
 
 applyConfig();
+updateHeader();

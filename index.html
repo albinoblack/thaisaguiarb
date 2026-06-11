@@ -7,81 +7,200 @@
       name="description"
       content="Dra. Thaís Aguiar, otorrinolaringologista com subespecialização em Rinologia e Cirurgia Endoscópica Nasal."
     />
-    <title>Dra. Thaís Aguiar | Otorrinolaringologista</title>
+    <title>Dra. Thaís Aguiar | Otorrinolaringologia e Rinologia</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page-shell">
-      <section class="profile-card" aria-labelledby="page-title">
-        <div class="info-panel">
-          <header class="doctor-heading">
-            <p class="doctor-kicker">Dra. Thaís Aguiar</p>
-            <h1 id="page-title">Otorrinolaringologista</h1>
-            <p class="credentials js-credentials" hidden></p>
-          </header>
+    <header class="site-header">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio" aria-label="Dra. Thaís Aguiar">
+          <span class="brand-symbol">TA</span>
+          <span>Dra. Thaís Aguiar</span>
+        </a>
 
-          <div class="qualification-list" aria-label="Formação da Dra. Thaís Aguiar">
-            <article class="qualification-item">
-              <span class="star-icon" aria-hidden="true">★</span>
-              <div>
-                <h2>Médica</h2>
-                <p>Formada pela Faculdade Pernambucana de Saúde — FPS</p>
-              </div>
-            </article>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
 
-            <article class="qualification-item">
-              <span class="star-icon" aria-hidden="true">★</span>
-              <div>
-                <h2>Otorrino</h2>
-                <p>Formada pela Faculdade de Medicina de São José do Rio Preto — FAMERP</p>
-              </div>
-            </article>
+        <div class="menu" id="menu">
+          <a href="#formacao">Formação</a>
+          <a href="#atuacao">Atuação</a>
+          <a href="#quando-procurar">Quando procurar</a>
+          <a href="#contato">Contato</a>
+        </div>
 
-            <article class="qualification-item">
-              <span class="star-icon" aria-hidden="true">★</span>
-              <div>
-                <h2>Subespecialização em Rinologia e Cirurgia Endoscópica Nasal</h2>
-                <p>pela FAMERP</p>
-              </div>
-            </article>
+        <a class="btn btn-primary nav-action js-whatsapp" href="#" target="_blank" rel="noopener">
+          Agendar consulta
+        </a>
+      </nav>
+    </header>
 
-            <article class="qualification-item">
-              <span class="star-icon" aria-hidden="true">★</span>
-              <div>
-                <h2>Membro da Pernambuco Otorrinos</h2>
-              </div>
-            </article>
-          </div>
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Otorrinolaringologia especializada</p>
+            <h1>Dra. Thaís Aguiar</h1>
+            <p class="hero-subtitle">Otorrinolaringologia, Rinologia e Cirurgia Endoscópica Nasal</p>
+            <p class="hero-text">
+              Cuidado especializado para respiração, nariz, seios da face, ronco e saúde
+              otorrinolaringológica, com avaliação individualizada e conduta precisa.
+            </p>
 
-          <footer class="info-footer">
-            <a class="logo-slot js-logo-link" href="#" aria-label="Símbolo da Dra. Thaís Aguiar">
-              <img class="js-logo" alt="Logo da Dra. Thaís Aguiar" hidden />
-              <span class="logo-fallback">TA</span>
-            </a>
-
-            <div class="actions">
+            <div class="hero-actions">
               <a class="btn btn-primary js-whatsapp" href="#" target="_blank" rel="noopener">
                 Agendar consulta
               </a>
-              <a class="btn btn-secondary js-instagram" href="#" target="_blank" rel="noopener">
-                Instagram
-              </a>
+              <a class="btn btn-secondary" href="#formacao">Conhecer formação</a>
             </div>
-          </footer>
-        </div>
 
-        <div class="color-divider" aria-hidden="true">
-          <span class="divider-red"></span>
-          <span class="divider-yellow"></span>
-          <span class="divider-green"></span>
-        </div>
+            <div class="hero-points" aria-label="Destaques">
+              <span>Rinologia</span>
+              <span>Cirurgia Endoscópica Nasal</span>
+              <span>Atendimento especializado</span>
+            </div>
+          </div>
 
-        <div class="photo-panel">
-          <div class="photo-wash" aria-hidden="true"></div>
-          <img class="doctor-photo js-doctor-photo" alt="Dra. Thaís Aguiar" />
+          <div class="hero-visual reveal" style="--delay: 100ms">
+            <div class="portrait-card">
+              <img class="js-hero-photo" alt="Dra. Thaís Aguiar em retrato profissional" />
+            </div>
+            <div class="credential-card">
+              <strong>Rinologia</strong>
+              <span>Diagnóstico e tratamento de doenças nasais e dos seios da face.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="formacao">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Formação</p>
+            <h2>Trajetória sólida, atendimento cuidadoso.</h2>
+          </div>
+
+          <div class="formation-grid">
+            <article class="formation-card reveal">
+              <span>01</span>
+              <h3>Médica</h3>
+              <p>Formada pela Faculdade Pernambucana de Saúde — FPS.</p>
+            </article>
+            <article class="formation-card reveal" style="--delay: 70ms">
+              <span>02</span>
+              <h3>Otorrinolaringologista</h3>
+              <p>Formada pela Faculdade de Medicina de São José do Rio Preto — FAMERP.</p>
+            </article>
+            <article class="formation-card reveal" style="--delay: 140ms">
+              <span>03</span>
+              <h3>Rinologia e Cirurgia Endoscópica Nasal</h3>
+              <p>Subespecialização pela FAMERP.</p>
+            </article>
+            <article class="formation-card reveal" style="--delay: 210ms">
+              <span>04</span>
+              <h3>Pernambuco Otorrinos</h3>
+              <p>Membro da Pernambuco Otorrinos.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section practice-section" id="atuacao">
+        <div class="container practice-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Áreas de atuação</p>
+            <h2>Foco em respiração, nariz, seios da face e qualidade do sono.</h2>
+          </div>
+
+          <div class="practice-list">
+            <article class="practice-item reveal">
+              <h3>Nariz entupido e rinite</h3>
+              <p>Avaliação de sintomas persistentes, crises alérgicas e obstrução nasal.</p>
+            </article>
+            <article class="practice-item reveal" style="--delay: 60ms">
+              <h3>Sinusite e rinossinusite</h3>
+              <p>Investigação de quadros agudos, recorrentes ou crônicos.</p>
+            </article>
+            <article class="practice-item reveal" style="--delay: 120ms">
+              <h3>Desvio de septo e obstrução nasal</h3>
+              <p>Condutas clínicas e cirúrgicas para melhorar a respiração pelo nariz.</p>
+            </article>
+            <article class="practice-item reveal" style="--delay: 180ms">
+              <h3>Ronco e respiração durante o sono</h3>
+              <p>Avaliação otorrinolaringológica de fatores ligados ao sono não reparador.</p>
+            </article>
+            <article class="practice-item reveal" style="--delay: 240ms">
+              <h3>Cirurgia endoscópica nasal</h3>
+              <p>Abordagem especializada para doenças nasais e dos seios da face.</p>
+            </article>
+            <article class="practice-item reveal" style="--delay: 300ms">
+              <h3>Alterações do olfato</h3>
+              <p>Investigação de perda, redução ou distorções do olfato.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section">
+        <div class="container story-grid">
+          <div class="story-image reveal">
+            <img src="assets/img/dra-thais-rinologia.jpg" alt="Dra. Thaís Aguiar em atendimento otorrinolaringológico" />
+          </div>
+          <div class="story-copy reveal" style="--delay: 100ms">
+            <p class="eyebrow">Cuidado individualizado</p>
+            <h2>Respirar bem muda a qualidade de vida.</h2>
+            <p>
+              A avaliação otorrinolaringológica permite investigar sintomas persistentes,
+              indicar o tratamento adequado e acompanhar cada paciente de forma individualizada.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="quando-procurar">
+        <div class="container symptoms-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Quando procurar uma otorrino</p>
+            <h2>Sintomas recorrentes não precisam fazer parte da rotina.</h2>
+          </div>
+
+          <div class="symptoms-list reveal" style="--delay: 100ms">
+            <span>Nariz entupido frequente</span>
+            <span>Crises repetidas de sinusite</span>
+            <span>Ronco ou sono não reparador</span>
+            <span>Dificuldade para respirar pelo nariz</span>
+            <span>Dor ou pressão facial</span>
+            <span>Perda ou alteração do olfato</span>
+            <span>Secreção nasal persistente</span>
+            <span>Sangramentos nasais recorrentes</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" id="contato">
+        <div class="container cta-card reveal">
+          <div>
+            <p class="eyebrow">Agendamento</p>
+            <h2>Agende sua consulta com a Dra. Thaís Aguiar</h2>
+            <p>Atendimento especializado em Otorrinolaringologia, Rinologia e Cirurgia Endoscópica Nasal.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-light js-whatsapp" href="#" target="_blank" rel="noopener">Falar pelo WhatsApp</a>
+            <a class="instagram-link js-instagram" href="#" target="_blank" rel="noopener">Instagram</a>
+          </div>
         </div>
       </section>
     </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>Dra. Thaís Aguiar</span>
+        <span class="js-credentials"></span>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>
