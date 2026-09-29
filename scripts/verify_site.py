@@ -56,6 +56,9 @@ assert "assets/img/whatsapp.svg" in html, "Ícone do WhatsApp ausente"
 assert "prefers-reduced-motion" in css, "Movimento reduzido não contemplado"
 assert 'class="scroll-progress"' in html and "updateScrollUi" in script, "Indicador de progresso ausente"
 assert "ambient-active" in css and "ambient-active" in script, "Animação de fundo sem controle de visibilidade"
+assert (ROOT / "assets/img/fluxo-respiratorio.svg").is_file(), "Motivo respiratório ausente"
+assert css.count('url("assets/img/fluxo-respiratorio.svg")') == 3, "Motivo respiratório não está presente nas seções"
+assert "ambient-lines" not in css, "Padrão de linhas antigo ainda presente"
 assert "data-future-path=" in html, "Rotas futuras de tratamentos ausentes"
 
 print(f"OK: {len(parser.ids)} IDs, {len(parser.images)} imagens, {len(parser.booking_links)} CTAs, links e arquivos locais.")

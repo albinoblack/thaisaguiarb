@@ -68,19 +68,18 @@ p {
 }
 .section::before {
   position: absolute;
-  inset: 0 -160px;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 159px,
-    rgba(39, 78, 73, 0.1) 159px 160px
-  );
+  inset: 0;
+  background: url("assets/img/fluxo-respiratorio.svg") right center /
+    clamp(440px, 70vw, 900px) auto no-repeat;
   content: "";
+  opacity: 0.18;
   pointer-events: none;
-  animation: ambient-lines 26s linear infinite;
+  animation: ambient-breath 16s ease-in-out infinite;
   animation-play-state: paused;
 }
 .section:is(.practice-section, .about-section)::before {
-  animation-direction: reverse;
+  background-position: left center;
+  animation-delay: -8s;
 }
 .section > .container {
   position: relative;
@@ -546,15 +545,14 @@ section[id] {
 }
 .editorial-copy::before {
   position: absolute;
-  inset: 0 -160px;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 159px,
-    rgba(255, 255, 255, 0.1) 159px 160px
-  );
+  inset: 0;
+  background: url("assets/img/fluxo-respiratorio.svg") center center /
+    clamp(440px, 55vw, 700px) auto no-repeat;
   content: "";
+  filter: brightness(0) invert(1);
+  opacity: 0.18;
   pointer-events: none;
-  animation: ambient-lines 30s linear infinite reverse;
+  animation: ambient-breath 18s ease-in-out infinite;
   animation-play-state: paused;
 }
 .editorial-copy > * {
@@ -697,15 +695,14 @@ section[id] {
 }
 .closing-section::before {
   position: absolute;
-  inset: 0 -180px;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 179px,
-    rgba(255, 255, 255, 0.11) 179px 180px
-  );
+  inset: 0;
+  background: url("assets/img/fluxo-respiratorio.svg") center center /
+    clamp(520px, 85vw, 1000px) auto no-repeat;
   content: "";
+  filter: brightness(0) invert(1);
+  opacity: 0.16;
   pointer-events: none;
-  animation: ambient-lines 32s linear infinite;
+  animation: ambient-breath 19s ease-in-out infinite;
   animation-play-state: paused;
 }
 .section.ambient-active::before,
@@ -713,9 +710,13 @@ section[id] {
 .closing-section.ambient-active::before {
   animation-play-state: running;
 }
-@keyframes ambient-lines {
-  to {
-    transform: translate3d(180px, 0, 0);
+@keyframes ambient-breath {
+  0%,
+  100% {
+    transform: translate3d(-16px, 7px, 0) scale(0.985);
+  }
+  50% {
+    transform: translate3d(16px, -7px, 0) scale(1.015);
   }
 }
 .closing-inner {
