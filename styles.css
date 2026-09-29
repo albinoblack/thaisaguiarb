@@ -189,10 +189,26 @@ section[id] {
   gap: clamp(13px, 1.7vw, 29px);
 }
 .primary-nav > a {
+  position: relative;
   font-size: 0.86rem;
   font-weight: 600;
   white-space: nowrap;
   transition: color 0.2s ease;
+}
+.primary-nav > a:not(.nav-booking)::after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 1px;
+  background: var(--coral);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.primary-nav > a:not(.nav-booking):is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
 }
 .primary-nav > a:hover {
   color: var(--coral);
@@ -576,15 +592,25 @@ section[id] {
   content: "+";
   color: var(--coral);
   font: 400 1.5rem/1 var(--font-display);
+  transition: transform 0.25s ease;
 }
 .faq-list details[open] summary::after {
-  content: "−";
+  transform: rotate(45deg);
 }
 .faq-list details p {
   max-width: 55ch;
   margin: 0 0 22px;
   color: var(--muted);
   font-size: 0.94rem;
+}
+.faq-list details[open] p {
+  animation: faq-reveal 0.32s ease-out;
+}
+@keyframes faq-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
 }
 .location-section {
   padding: 52px 0;
@@ -612,11 +638,31 @@ section[id] {
   flex: none;
 }
 .closing-section {
+  position: relative;
+  overflow: hidden;
   padding: clamp(90px, 10vw, 155px) 0;
   background: var(--forest-dark);
   color: var(--white);
 }
+.closing-section::before {
+  position: absolute;
+  inset: 0 -180px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 179px,
+    rgba(255, 255, 255, 0.055) 179px 180px
+  );
+  content: "";
+  pointer-events: none;
+  animation: ambient-lines 32s linear infinite;
+}
+@keyframes ambient-lines {
+  to {
+    transform: translate3d(180px, 0, 0);
+  }
+}
 .closing-inner {
+  position: relative;
   text-align: center;
 }
 .closing-inner > * {
@@ -752,6 +798,9 @@ body.motion-ready .reveal.is-visible {
   .primary-nav > a {
     padding: 10px 0;
     font-size: 1rem;
+  }
+  .primary-nav > a:not(.nav-booking)::after {
+    display: none;
   }
   .primary-nav .nav-booking {
     margin-top: 8px;
@@ -987,5 +1036,8 @@ body.motion-ready .reveal.is-visible {
   body.motion-ready .reveal {
     opacity: 1;
     transform: none;
+  }
+  .closing-section::before {
+    animation: none;
   }
 }
