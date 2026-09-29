@@ -13,11 +13,9 @@ window.SITE_CONFIG = Object.freeze({
   },
   images: {
     logo: "assets/img/logo-thais-aguiar.png",
-    heroPrimary: "assets/img/hero-jaleco.webp",
-    heroSlides: ["assets/img/hero-jaleco.webp", "assets/img/hero-close.webp", "assets/img/hero-editorial.webp"],
-    aboutPrimary: "assets/img/sobre-thais.webp",
+    heroPrimary: "assets/img/hero-premium.webp",
+    aboutPrimary: "assets/img/hero-jaleco.webp",
     consultation: "assets/img/consulta-otorrino.webp",
-    surgeryGallery: ["assets/img/cirurgia-equipe.webp", "assets/img/cirurgia-detalhe.webp"],
     rinologySupport: ["assets/img/rinologia-anatomia.webp"]
   }
 });
