@@ -38,6 +38,7 @@ class SiteParser(HTMLParser):
 
 html = (ROOT / "index.html").read_text(encoding="utf-8")
 css = (ROOT / "styles.css").read_text(encoding="utf-8")
+script = (ROOT / "script.js").read_text(encoding="utf-8")
 parser = SiteParser()
 parser.feed(html)
 
@@ -53,6 +54,8 @@ assert len(parser.booking_links) >= 5, "CTAs insuficientes na jornada"
 assert all("wa.me/5581988863875" in link for link in parser.booking_links), "WhatsApp incorreto"
 assert "assets/img/whatsapp.svg" in html, "Ícone do WhatsApp ausente"
 assert "prefers-reduced-motion" in css, "Movimento reduzido não contemplado"
+assert 'class="scroll-progress"' in html and "updateScrollUi" in script, "Indicador de progresso ausente"
+assert "ambient-active" in css and "ambient-active" in script, "Animação de fundo sem controle de visibilidade"
 assert "data-future-path=" in html, "Rotas futuras de tratamentos ausentes"
 
 print(f"OK: {len(parser.ids)} IDs, {len(parser.images)} imagens, {len(parser.booking_links)} CTAs, links e arquivos locais.")

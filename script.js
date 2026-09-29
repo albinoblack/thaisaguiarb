@@ -2,6 +2,7 @@ const { doctor, contact, images } = window.SITE_CONFIG;
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector(".primary-nav");
 const siteHeader = document.querySelector(".site-header");
+const scrollProgress = document.querySelector(".scroll-progress");
 
 function bookingUrl() {
   const digits = contact.whatsappNumber.replace(/\D/g, "");
@@ -43,15 +44,43 @@ document.addEventListener("click", (event) => {
   if (!primaryNav.contains(event.target) && !menuToggle.contains(event.target))
     closeMenu();
 });
-window.addEventListener(
-  "scroll",
-  () => {
-    siteHeader.classList.toggle("is-scrolled", window.scrollY > 16);
-  },
-  { passive: true },
-);
+let scrollFrame = 0;
+function updateScrollUi() {
+  siteHeader.classList.toggle("is-scrolled", window.scrollY > 16);
+  const scrollableHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+  const progress =
+    scrollableHeight > 0
+      ? Math.max(0, Math.min(1, window.scrollY / scrollableHeight))
+      : 0;
+  scrollProgress.style.transform = `scaleX(${progress})`;
+  scrollFrame = 0;
+}
+function scheduleScrollUi() {
+  if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollUi);
+}
+window.addEventListener("scroll", scheduleScrollUi, { passive: true });
+window.addEventListener("resize", scheduleScrollUi);
+window.addEventListener("load", scheduleScrollUi);
+updateScrollUi();
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const ambientSections = document.querySelectorAll(
+  ".section, .editorial-copy, .closing-section",
+);
+if ("IntersectionObserver" in window) {
+  const ambientObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("ambient-active", entry.isIntersecting);
+      });
+    },
+    { rootMargin: "120px 0px" },
+  );
+  ambientSections.forEach((section) => ambientObserver.observe(section));
+} else {
+  ambientSections.forEach((section) => section.classList.add("ambient-active"));
+}
 if ("IntersectionObserver" in window && !reducedMotion.matches) {
   document.body.classList.add("motion-ready");
   const observer = new IntersectionObserver(

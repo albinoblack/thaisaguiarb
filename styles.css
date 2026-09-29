@@ -62,7 +62,28 @@ p {
   margin-inline: auto;
 }
 .section {
+  position: relative;
+  overflow: hidden;
   padding: clamp(84px, 9vw, 148px) 0;
+}
+.section::before {
+  position: absolute;
+  inset: 0 -160px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 159px,
+    rgba(39, 78, 73, 0.1) 159px 160px
+  );
+  content: "";
+  pointer-events: none;
+  animation: ambient-lines 26s linear infinite;
+  animation-play-state: paused;
+}
+.section:is(.practice-section, .about-section)::before {
+  animation-direction: reverse;
+}
+.section > .container {
+  position: relative;
 }
 section[id] {
   scroll-margin-top: calc(var(--header-height) + 16px);
@@ -78,6 +99,18 @@ section[id] {
 }
 .skip-link:focus {
   top: 12px;
+}
+.scroll-progress {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--coral);
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 :focus-visible {
   outline: 3px solid #d7a85f;
@@ -503,11 +536,29 @@ section[id] {
   object-position: center;
 }
 .editorial-copy {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  overflow: hidden;
   padding: 70px clamp(45px, 7vw, 125px);
+}
+.editorial-copy::before {
+  position: absolute;
+  inset: 0 -160px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 159px,
+    rgba(255, 255, 255, 0.1) 159px 160px
+  );
+  content: "";
+  pointer-events: none;
+  animation: ambient-lines 30s linear infinite reverse;
+  animation-play-state: paused;
+}
+.editorial-copy > * {
+  position: relative;
 }
 .editorial-copy .eyebrow {
   color: #cfa69d;
@@ -650,11 +701,17 @@ section[id] {
   background: repeating-linear-gradient(
     90deg,
     transparent 0 179px,
-    rgba(255, 255, 255, 0.055) 179px 180px
+    rgba(255, 255, 255, 0.11) 179px 180px
   );
   content: "";
   pointer-events: none;
   animation: ambient-lines 32s linear infinite;
+  animation-play-state: paused;
+}
+.section.ambient-active::before,
+.editorial-copy.ambient-active::before,
+.closing-section.ambient-active::before {
+  animation-play-state: running;
 }
 @keyframes ambient-lines {
   to {
@@ -748,14 +805,84 @@ section[id] {
 }
 body.motion-ready .reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(24px);
   transition:
-    opacity 0.65s ease,
-    transform 0.65s ease;
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 body.motion-ready .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+body.motion-ready
+  .reveal:is(.needs-list, .practice-list, .consultation-steps, .faq-list)
+  > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > * {
+  opacity: 1;
+  transform: none;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > :nth-child(2) {
+  transition-delay: 0.08s;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > :nth-child(3) {
+  transition-delay: 0.16s;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > :nth-child(4) {
+  transition-delay: 0.24s;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > :nth-child(5) {
+  transition-delay: 0.32s;
+}
+body.motion-ready
+  .reveal:is(
+    .needs-list,
+    .practice-list,
+    .consultation-steps,
+    .faq-list
+  ).is-visible
+  > :nth-child(6) {
+  transition-delay: 0.4s;
 }
 @media (max-width: 1070px) {
   .primary-nav {
@@ -1037,6 +1164,14 @@ body.motion-ready .reveal.is-visible {
     opacity: 1;
     transform: none;
   }
+  body.motion-ready
+    .reveal:is(.needs-list, .practice-list, .consultation-steps, .faq-list)
+    > * {
+    opacity: 1;
+    transform: none;
+  }
+  .section::before,
+  .editorial-copy::before,
   .closing-section::before {
     animation: none;
   }
