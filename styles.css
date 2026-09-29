@@ -9,8 +9,8 @@
   --mist: #e8eeea;
   --line: #d6ddd7;
   --header-height: 76px;
-  --font-display: "Newsreader", Georgia, serif;
-  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -22,7 +22,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 17px/1.6 var(--font-body);
+  font: 400 16px/1.65 var(--font-body);
 }
 img {
   display: block;
@@ -174,8 +174,8 @@ section[id] {
 }
 .brand strong {
   font-family: var(--font-display);
-  font-size: 1.38rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 .brand small {
@@ -233,9 +233,14 @@ section[id] {
   width: 100%;
   height: 100%;
 }
+.hero-media {
+  left: auto;
+  right: 0;
+  width: 78%;
+}
 .hero-media img {
   object-fit: cover;
-  object-position: center 43%;
+  object-position: center top;
 }
 .hero::after {
   position: absolute;
@@ -273,7 +278,8 @@ section[id] {
 .hero h1 {
   max-width: 550px;
   margin: 0 0 23px;
-  font-size: clamp(3.55rem, 5.4vw, 6rem);
+  font-size: clamp(4.2rem, 5.7vw, 6.5rem);
+  font-weight: 500;
 }
 .hero-copy > p:not(.eyebrow) {
   max-width: 420px;
@@ -413,7 +419,7 @@ section[id] {
   margin: 0 0 7px;
   color: var(--forest);
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 400;
 }
 .practice-list p {
@@ -455,7 +461,7 @@ section[id] {
 .consultation-steps h3 {
   margin: 0 0 4px;
   font-family: var(--font-display);
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 .consultation-steps p {
@@ -713,7 +719,7 @@ body.motion-ready .reveal.is-visible {
     font-size: 0.77rem;
   }
   .brand strong {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   .practice-layout {
     gap: 42px;
@@ -752,18 +758,33 @@ body.motion-ready .reveal.is-visible {
     text-align: center;
   }
   .hero {
-    min-height: 620px;
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    background: var(--forest-dark);
+  }
+  .hero-media {
+    position: relative;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: clamp(320px, 48vw, 440px);
+  }
+  .hero-media img {
+    object-position: center top;
+  }
+  .hero-content {
+    min-height: 0;
+    padding-block: 38px 56px;
   }
   .hero h1 {
-    font-size: clamp(3.3rem, 7vw, 5rem);
+    font-size: clamp(3.8rem, 7.5vw, 5.2rem);
   }
   .hero::after {
-    background: linear-gradient(
-      90deg,
-      rgba(18, 43, 40, 0.9),
-      rgba(18, 43, 40, 0.52) 55%,
-      rgba(18, 43, 40, 0.1)
-    );
+    display: none;
+  }
+  .hero-note {
+    display: none;
   }
   .identity-inner {
     justify-content: start;
@@ -801,7 +822,7 @@ body.motion-ready .reveal.is-visible {
     height: clamp(290px, 77vw, 480px);
   }
   .hero-media img {
-    object-position: center 27%;
+    object-position: center top;
   }
   .hero::after {
     display: none;
@@ -820,7 +841,7 @@ body.motion-ready .reveal.is-visible {
   .hero h1 {
     max-width: 500px;
     margin-bottom: 14px;
-    font-size: clamp(2.65rem, 10vw, 4.2rem);
+    font-size: clamp(3.2rem, 11vw, 4.5rem);
   }
   .hero-copy > p:not(.eyebrow) {
     margin-bottom: 23px;
@@ -915,7 +936,7 @@ body.motion-ready .reveal.is-visible {
     height: 41px;
   }
   .brand strong {
-    font-size: 1.15rem;
+    font-size: 1.35rem;
   }
   .brand small {
     font-size: 0.58rem;
@@ -928,7 +949,7 @@ body.motion-ready .reveal.is-visible {
     padding-bottom: 31px;
   }
   .hero h1 {
-    font-size: 2.8rem;
+    font-size: 3.3rem;
   }
   .hero-actions .button {
     width: 100%;
