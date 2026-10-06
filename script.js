@@ -160,6 +160,7 @@ startCarousel();
 const surgeryGallery = document.querySelector(".surgery-gallery");
 const surgeryTrack = surgeryGallery.querySelector(".surgery-track");
 const surgerySlides = [...surgeryGallery.querySelectorAll(".surgery-slide")];
+const surgeryControls = surgeryGallery.querySelector(".surgery-controls");
 const surgeryCount = surgeryGallery.querySelector(".surgery-count");
 let surgeryIndex = 0;
 let surgeryPosition = 1;
@@ -225,15 +226,15 @@ function stopSurgeryCarousel() {
 }
 function startSurgeryCarousel() {
   stopSurgeryCarousel();
-  if (reducedMotion.matches || document.hidden || !surgeryVisible || surgeryGallery.matches(":hover") || surgeryGallery.contains(document.activeElement)) return;
-  surgeryTimer = window.setInterval(() => showSurgerySlide(surgeryIndex + 1), 7000);
+  if (reducedMotion.matches || document.hidden || !surgeryVisible || surgeryControls.matches(":hover") || surgeryGallery.contains(document.activeElement)) return;
+  surgeryTimer = window.setInterval(() => showSurgerySlide(surgeryIndex + 1), 5500);
 }
 
 surgeryGallery.classList.add("carousel-ready");
 surgeryGallery.querySelector(".surgery-prev").addEventListener("click", () => { showSurgerySlide(surgeryIndex - 1); startSurgeryCarousel(); });
 surgeryGallery.querySelector(".surgery-next").addEventListener("click", () => { showSurgerySlide(surgeryIndex + 1); startSurgeryCarousel(); });
-surgeryGallery.addEventListener("mouseenter", stopSurgeryCarousel);
-surgeryGallery.addEventListener("mouseleave", startSurgeryCarousel);
+surgeryControls.addEventListener("mouseenter", stopSurgeryCarousel);
+surgeryControls.addEventListener("mouseleave", startSurgeryCarousel);
 surgeryGallery.addEventListener("focusin", stopSurgeryCarousel);
 surgeryGallery.addEventListener("focusout", (event) => { if (!surgeryGallery.contains(event.relatedTarget)) startSurgeryCarousel(); });
 surgeryGallery.addEventListener("pointerdown", (event) => { if (event.pointerType === "touch") surgeryTouchX = event.clientX; });
