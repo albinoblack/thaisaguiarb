@@ -12,7 +12,7 @@ window.SITE_CONFIG = Object.freeze({
     address: ""
   },
   images: {
-    logo: "assets/img/logo-thais-aguiar.png",
+    logo: "assets/img/logo-thais-aguiar.webp",
     heroPrimary: "assets/img/hero-jaleco.webp",
     heroSlides: ["assets/img/hero-jaleco.webp", "assets/img/hero-close.webp", "assets/img/hero-editorial.webp"],
     aboutPrimary: "assets/img/sobre-thais.webp",
