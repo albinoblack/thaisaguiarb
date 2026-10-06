@@ -157,6 +157,16 @@ if ("IntersectionObserver" in window) {
 }
 startCarousel();
 
+const ambientSections = document.querySelectorAll(".hero-copy, .section, .location-section, .contact-section");
+if ("IntersectionObserver" in window) {
+  const ambientObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle("ambient-active", entry.isIntersecting));
+  }, { rootMargin: "100px 0px" });
+  ambientSections.forEach((section) => ambientObserver.observe(section));
+} else {
+  ambientSections.forEach((section) => section.classList.add("ambient-active"));
+}
+
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.body.classList.add("motion-ready");
   const observer = new IntersectionObserver((entries) => {
