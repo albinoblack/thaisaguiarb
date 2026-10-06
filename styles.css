@@ -156,9 +156,15 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .surgery-layout { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 .surgery-copy h2 { max-width: 590px; margin-bottom: 28px; color: var(--white); }
 .surgery-copy p:not(.eyebrow) { color: #cedbd2; font-size: 1.04rem; }
-.surgery-images { display: grid; grid-template-columns: 1fr .75fr; align-items: end; gap: 13px; }
-.surgery-images img { width: 100%; height: 380px; border-radius: 12px; object-fit: cover; object-position: center 20%; filter: saturate(.76); }
-.surgery-images img + img { height: 280px; object-position: center 12%; }
+.surgery-gallery { position: relative; width: 100%; height: clamp(440px, 43vw, 560px); overflow: hidden; border-radius: 16px; background: #596a6a; touch-action: pan-y; }
+.surgery-track { display: flex; width: 100%; height: 100%; }
+.surgery-track.is-animated { transition: transform .8s cubic-bezier(.22, .61, .36, 1); }
+.surgery-slide { width: 100%; height: 100%; flex: 0 0 100%; object-fit: cover; object-position: center 34%; }
+.surgery-controls { position: absolute; right: 18px; bottom: 18px; display: none; height: 42px; align-items: center; gap: 12px; padding: 3px 7px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px; color: var(--white); background: rgba(20, 35, 34, .78); backdrop-filter: blur(8px); }
+.surgery-gallery.carousel-ready .surgery-controls { display: flex; }
+.surgery-controls button { display: grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 0; color: inherit; background: transparent; font: 28px/1 var(--font-body); cursor: pointer; }
+.surgery-controls button:hover { color: #e7cfae; }
+.surgery-count { min-width: 48px; font-size: .68rem; font-weight: 700; text-align: center; white-space: nowrap; }
 
 .faq-section { background: var(--white); }
 .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(40px, 8vw, 110px); }
@@ -199,12 +205,13 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 
 body.motion-ready .reveal { opacity: 0; transform: translateY(12px); transition: opacity .85s ease, transform .85s cubic-bezier(.22, .61, .36, 1), border-color .25s ease, box-shadow .25s ease; }
 body.motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
-body.motion-ready .about-copy, body.motion-ready .rinology-photo, body.motion-ready .consultation-copy, body.motion-ready .surgery-images, body.motion-ready .faq-list { transition-delay: .12s; }
+body.motion-ready .about-copy, body.motion-ready .rinology-photo, body.motion-ready .consultation-copy, body.motion-ready .surgery-gallery, body.motion-ready .faq-list { transition-delay: .12s; }
 body.motion-ready .treatment:nth-child(3n + 2) { transition-delay: .08s; }
 body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .hero-track { transition: none !important; }
+  .surgery-track { transition: none !important; }
   .hero-copy-inner > *, .hero-photo, .faq-list details[open] p { animation: none !important; }
   .section::before, .location-section::before, .contact-section::before, .hero-copy::before { animation: none !important; }
 }
@@ -252,8 +259,8 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
   .section-top, .location-inner { display: block; }
   .section-top > p { max-width: 580px; margin-top: 15px; }
   .location-inner .text-link { margin-top: 18px; }
-  .surgery-images img { height: 320px; }
-  .surgery-images img + img { height: 230px; }
+  .surgery-gallery { height: clamp(350px, 100vw, 520px); }
+  .surgery-controls { right: 12px; bottom: 12px; }
   .whatsapp-float { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 56px; height: 56px; }
   .site-footer { padding-bottom: 92px; }
 }
@@ -274,7 +281,5 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
   .treatment > span { margin-bottom: 18px; }
   .footer-inner { flex-direction: column; }
   .footer-inner > div:last-child { align-items: start; }
-  .surgery-images { gap: 8px; }
-  .surgery-images img { height: 250px; }
-  .surgery-images img + img { height: 200px; }
+  .surgery-gallery { height: 420px; }
 }
