@@ -457,3 +457,8 @@ h2 em, .hero-statement em { font-weight: 400; color: #8b7051; }
 /* The opening portrait is visible immediately; decorative motion starts elsewhere. */
 .hero-photo, .hero-copy-inner > * { animation: none; }
 @media (max-width: 700px) { .instagram-media { height: 460px; } }
+
+.footer-credit { margin-top: 30px; padding-top: 20px; border-top: 1px solid #3a574a; }
+.footer-credit p { max-width: none; margin: 0; color: #c4d0c5; font-size: .75rem; text-align: center; }
+.footer-credit a { color: #e0c49e; text-decoration: underline; text-underline-offset: 3px; }
+.footer-credit a:hover { color: #fff; }
