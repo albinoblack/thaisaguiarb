@@ -11,8 +11,8 @@
   --wine: #803c45;
   --line: #d7ddd7;
   --header-height: 76px;
-  --font-display: "Newsreader", "Palatino Linotype", Georgia, serif;
-  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-display: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -23,13 +23,21 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, .hero-statement { font-family: var(--font-display); font-weight: 400; font-optical-sizing: auto; }
-h2 { font-size: clamp(2.1rem, 3.4vw, 3.45rem); line-height: 1.12; }
+h2 { font-size: clamp(2.65rem, 4.2vw, 4.25rem); line-height: 1.06; }
 h3 { font-size: 1.12rem; font-weight: 600; line-height: 1.3; }
 p { max-width: 64ch; }
 [hidden] { display: none !important; }
 section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .container { width: min(100% - 48px, 1220px); margin-inline: auto; }
 .section { padding: clamp(76px, 8vw, 130px) 0; }
+.section, .location-section, .contact-section { position: relative; overflow: hidden; isolation: isolate; }
+.section::before, .location-section::before, .contact-section::before, .hero-copy::before { position: absolute; inset: 0; z-index: -1; background: url("assets/img/fluxo-respiratorio.svg") right center / clamp(480px, 67vw, 900px) auto no-repeat; content: ""; opacity: .17; pointer-events: none; animation: ambient-breath 17s ease-in-out infinite; animation-play-state: paused; }
+.about-section::before, .rinology-section::before, .surgery-section::before, .location-section::before { background-position: left center; animation-delay: -8s; }
+.surgery-section::before, .contact-section::before, .hero-copy::before { filter: brightness(0) invert(1); opacity: .11; }
+.hero-copy::before { background-position: -260px center; background-size: 690px auto; opacity: .085; }
+.ambient-active::before { animation-play-state: running; }
+.section > .container, .location-section > .container, .contact-section > .container { position: relative; }
+@keyframes ambient-breath { 0%, 100% { transform: translate3d(-18px, 8px, 0) scale(.985); } 50% { transform: translate3d(18px, -8px, 0) scale(1.015); } }
 .skip-link { position: fixed; z-index: 100; top: -80px; left: 12px; padding: 10px 16px; color: var(--white); background: var(--green-deep); }
 .skip-link:focus { top: 12px; }
 :focus-visible { outline: 3px solid #d2a968; outline-offset: 4px; }
@@ -42,7 +50,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; color: var(--green-deep); line-height: 1.12; }
 .brand-logo { width: 54px; height: 54px; flex: none; border-radius: 50%; object-fit: cover; }
 .brand-wordmark { display: grid; gap: 1px; }
-.brand strong { font-family: var(--font-display); font-size: 1.38rem; font-weight: 500; white-space: nowrap; }
+.brand strong { font-family: var(--font-display); font-size: 1.72rem; font-weight: 600; white-space: nowrap; }
 .brand-wordmark > span { font-size: .68rem; font-weight: 600; text-transform: uppercase; }
 .primary-nav { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 1.8vw, 29px); }
 .primary-nav a { color: #424d4a; font-size: .9rem; font-weight: 600; white-space: nowrap; transition: color .25s ease; }
@@ -61,12 +69,12 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .text-link { display: inline-flex; align-items: center; gap: 22px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: var(--green-deep); font-size: .96rem; font-weight: 600; }
 
 .hero { display: grid; grid-template-columns: 54% 46%; min-height: min(660px, calc(100svh - var(--header-height) - 40px)); overflow: hidden; border-radius: 0 0 20px 20px; background: var(--green-deep); }
-.hero-copy { display: flex; align-items: center; padding: 48px clamp(32px, 5vw, 84px) 48px max(42px, calc((100vw - 1220px) / 2)); color: var(--white); }
+.hero-copy { position: relative; z-index: 0; display: flex; align-items: center; padding: 48px clamp(32px, 5vw, 84px) 48px max(42px, calc((100vw - 1220px) / 2)); color: var(--white); }
 .hero-copy-inner { width: min(100%, 590px); }
 .hero-copy .eyebrow { margin-bottom: 18px; }
-.hero h1 { margin: 0 0 22px; font-size: clamp(2.7rem, 3.45vw, 3.45rem); font-weight: 500; line-height: 1.04; }
+.hero h1 { margin: 0 0 22px; font-size: clamp(3.25rem, 4.3vw, 4.35rem); font-weight: 500; line-height: 1; }
 .hero h1::after { display: block; width: 40px; height: 2px; margin-top: 24px; background: var(--champagne); content: ""; }
-.hero-statement { max-width: 480px; margin-bottom: 21px; font-size: clamp(1.65rem, 2.35vw, 2.35rem); line-height: 1.18; }
+.hero-statement { max-width: 480px; margin-bottom: 21px; font-size: clamp(2.15rem, 3vw, 3rem); line-height: 1.08; }
 .hero-description { max-width: 450px; margin-bottom: 27px; color: #d7e1db; font-size: .98rem; line-height: 1.7; }
 .hero-specialties { max-width: 580px; margin: 28px 0 0; color: #c3d2c9; font-size: .76rem; font-weight: 600; }
 .hero-specialties span { padding-inline: 5px; color: var(--champagne); }
@@ -122,7 +130,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .treatment { min-height: 225px; padding: 26px clamp(21px, 2.8vw, 39px); border: 1px solid #e1e8e1; border-radius: 8px; background: #f8faf7; }
 .treatment:hover { border-color: #b8c9be; box-shadow: 0 10px 28px rgba(35, 71, 66, .08); }
 .treatment > span { display: block; margin-bottom: 36px; color: var(--wine); font-size: .79rem; font-weight: 700; }
-.treatment h3 { max-width: 250px; margin-bottom: 9px; color: var(--green-deep); font-size: 1.1rem; }
+.treatment h3 { max-width: 250px; margin-bottom: 9px; color: var(--green-deep); font: 500 1.72rem/1.1 var(--font-display); }
 .treatment p { margin-bottom: 0; color: var(--muted); font-size: .91rem; }
 .treatments-section .text-link { margin-top: 33px; }
 
@@ -141,16 +149,37 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 .steps { margin: 34px 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .steps li { display: grid; grid-template-columns: 38px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
 .steps li > span { color: var(--wine); font-size: .75rem; font-weight: 700; }
-.steps strong { display: block; color: var(--green-deep); font-size: .94rem; }
+.steps strong { display: block; color: var(--green-deep); font: 500 1.4rem/1.15 var(--font-display); }
 .steps p { margin: 1px 0 0; color: var(--muted); font-size: .86rem; }
 
 .surgery-section { color: var(--white); background: #243b37; }
 .surgery-layout { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 .surgery-copy h2 { max-width: 590px; margin-bottom: 28px; color: var(--white); }
 .surgery-copy p:not(.eyebrow) { color: #cedbd2; font-size: 1.04rem; }
-.surgery-images { display: grid; grid-template-columns: 1fr .75fr; align-items: end; gap: 13px; }
-.surgery-images img { width: 100%; height: 380px; border-radius: 12px; object-fit: cover; object-position: center 20%; filter: saturate(.76); }
-.surgery-images img + img { height: 280px; object-position: center 12%; }
+.surgery-gallery { position: relative; width: 100%; height: clamp(440px, 43vw, 560px); overflow: hidden; border-radius: 16px; background: #596a6a; touch-action: pan-y; }
+.surgery-track { display: flex; width: 100%; height: 100%; }
+.surgery-track.is-animated { transition: transform .8s cubic-bezier(.22, .61, .36, 1); }
+.surgery-slide { width: 100%; height: 100%; flex: 0 0 100%; object-fit: cover; object-position: center 34%; }
+.surgery-controls { position: absolute; right: 18px; bottom: 18px; display: none; height: 42px; align-items: center; gap: 12px; padding: 3px 7px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px; color: var(--white); background: rgba(20, 35, 34, .78); backdrop-filter: blur(8px); }
+.surgery-gallery.carousel-ready .surgery-controls { display: flex; }
+.surgery-controls button { display: grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 0; color: inherit; background: transparent; font: 28px/1 var(--font-body); cursor: pointer; }
+.surgery-controls button:hover { color: #e7cfae; }
+.surgery-count { min-width: 48px; font-size: .68rem; font-weight: 700; text-align: center; white-space: nowrap; }
+
+.instagram-eyebrow { display: flex; align-items: center; gap: 9px; }
+.instagram-icon { flex: none; }
+.instagram-preview { display: block; width: 100%; height: 560px; border: 0; border-radius: 6px; background: #fff; }
+.instagram-section { background: var(--paper); }
+.instagram-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.instagram-card { display: flex; flex-direction: column; min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); transition: border-color .25s ease, box-shadow .25s ease; }
+.instagram-card:hover { border-color: var(--green); box-shadow: 0 10px 28px rgba(35, 71, 66, .08); }
+.instagram-card:focus-within { outline: 2px solid var(--green); outline-offset: 4px; }
+.instagram-card-top { gap: 12px; margin-bottom: 14px; font-size: .75rem; overflow-wrap: anywhere; display: flex; align-items: center; justify-content: space-between; color: var(--green-deep); }
+.instagram-format { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.instagram-card-link { display: block; padding: 14px 0 2px; margin-top: auto; color: var(--green-deep); font-size: .85rem; font-weight: 600; }
+.instagram-section > .container > .text-link { margin-top: 30px; }
+@media (max-width: 940px) { .instagram-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .instagram-grid { grid-template-columns: 1fr; } }
 
 .faq-section { background: var(--white); }
 .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(40px, 8vw, 110px); }
@@ -191,13 +220,15 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 18px); }
 
 body.motion-ready .reveal { opacity: 0; transform: translateY(12px); transition: opacity .85s ease, transform .85s cubic-bezier(.22, .61, .36, 1), border-color .25s ease, box-shadow .25s ease; }
 body.motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
-body.motion-ready .about-copy, body.motion-ready .rinology-photo, body.motion-ready .consultation-copy, body.motion-ready .surgery-images, body.motion-ready .faq-list { transition-delay: .12s; }
+body.motion-ready .about-copy, body.motion-ready .rinology-photo, body.motion-ready .consultation-copy, body.motion-ready .surgery-gallery, body.motion-ready .faq-list { transition-delay: .12s; }
 body.motion-ready .treatment:nth-child(3n + 2) { transition-delay: .08s; }
 body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .hero-track { transition: none !important; }
+  .surgery-track { transition: none !important; }
   .hero-copy-inner > *, .hero-photo, .faq-list details[open] p { animation: none !important; }
+  .section::before, .location-section::before, .contact-section::before, .hero-copy::before { animation: none !important; }
 }
 
 @media (max-width: 1120px) {
@@ -221,6 +252,8 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
 }
 @media (max-width: 700px) {
   .container { width: min(100% - 36px, 1220px); }
+  .section::before, .location-section::before, .contact-section::before { opacity: .1; }
+  .surgery-section::before, .contact-section::before { opacity: .09; }
   .hero { display: flex; flex-direction: column; min-height: 0; }
   .hero-photo { order: -1; height: clamp(290px, 77vw, 440px); min-height: 0; }
   .hero-slide { object-position: center 31%; }
@@ -241,8 +274,8 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
   .section-top, .location-inner { display: block; }
   .section-top > p { max-width: 580px; margin-top: 15px; }
   .location-inner .text-link { margin-top: 18px; }
-  .surgery-images img { height: 320px; }
-  .surgery-images img + img { height: 230px; }
+  .surgery-gallery { height: clamp(350px, 100vw, 520px); }
+  .surgery-controls { right: 12px; bottom: 12px; }
   .whatsapp-float { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 56px; height: 56px; }
   .site-footer { padding-bottom: 92px; }
 }
@@ -250,12 +283,12 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
   .header-inner { gap: 10px; }
   .brand { gap: 8px; }
   .brand-logo { width: 44px; height: 44px; }
-  .brand strong { font-size: 1.15rem; }
+  .brand strong { font-size: 1.35rem; }
   .brand-wordmark > span { font-size: .56rem; }
   .footer-logo { width: 70px; height: 70px; }
   .hero-photo { height: 230px; }
-  .hero h1 { font-size: 2.45rem; }
-  .hero-statement { font-size: 1.55rem; }
+  .hero h1 { font-size: 3.1rem; }
+  .hero-statement { font-size: 2.08rem; }
   .hero-copy { padding: 24px 18px 30px; }
   .hero-specialties { display: none; }
   .treatment-grid { grid-template-columns: 1fr; }
@@ -263,7 +296,5 @@ body.motion-ready .treatment:nth-child(3n) { transition-delay: .16s; }
   .treatment > span { margin-bottom: 18px; }
   .footer-inner { flex-direction: column; }
   .footer-inner > div:last-child { align-items: start; }
-  .surgery-images { gap: 8px; }
-  .surgery-images img { height: 250px; }
-  .surgery-images img + img { height: 200px; }
+  .surgery-gallery { height: 420px; }
 }

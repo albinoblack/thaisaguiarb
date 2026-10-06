@@ -17,7 +17,7 @@ window.SITE_CONFIG = Object.freeze({
     heroSlides: ["assets/img/hero-jaleco.webp", "assets/img/hero-close.webp", "assets/img/hero-editorial.webp"],
     aboutPrimary: "assets/img/sobre-thais.webp",
     consultation: "assets/img/consulta-otorrino.webp",
-    surgeryGallery: ["assets/img/cirurgia-equipe.webp", "assets/img/cirurgia-detalhe.webp"],
+    surgeryGallery: ["assets/img/cirurgia-nasal-01.jpeg", "assets/img/cirurgia-nasal-02.jpeg", "assets/img/cirurgia-nasal-03.jpeg", "assets/img/cirurgia-nasal-04.jpeg", "assets/img/cirurgia-nasal-05.jpeg"],
     rinologySupport: ["assets/img/rinologia-anatomia.webp"]
   }
 });

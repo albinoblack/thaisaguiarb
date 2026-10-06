@@ -157,6 +157,122 @@ if ("IntersectionObserver" in window) {
 }
 startCarousel();
 
+const surgeryGallery = document.querySelector(".surgery-gallery");
+const surgeryTrack = surgeryGallery.querySelector(".surgery-track");
+const surgerySlides = [...surgeryGallery.querySelectorAll(".surgery-slide")];
+const surgeryControls = surgeryGallery.querySelector(".surgery-controls");
+const surgeryCount = surgeryGallery.querySelector(".surgery-count");
+let surgeryIndex = 0;
+let surgeryPosition = 1;
+let surgeryMoving = false;
+let surgeryTimer;
+let surgeryTouchX = null;
+let surgeryVisible = !("IntersectionObserver" in window);
+
+surgerySlides.forEach((slide, index) => {
+  const source = images.surgeryGallery?.[index];
+  if (source && slide.getAttribute("src") !== source) slide.src = source;
+});
+const surgeryFirstClone = surgerySlides[0].cloneNode(true);
+const surgeryLastClone = surgerySlides[surgerySlides.length - 1].cloneNode(true);
+[surgeryFirstClone, surgeryLastClone].forEach((clone) => {
+  clone.classList.remove("is-active");
+  clone.classList.add("surgery-clone");
+  clone.alt = "";
+  clone.setAttribute("aria-hidden", "true");
+});
+surgeryTrack.prepend(surgeryLastClone);
+surgeryTrack.append(surgeryFirstClone);
+surgeryTrack.style.transform = "translate3d(-100%, 0, 0)";
+void surgeryTrack.offsetWidth;
+surgeryTrack.classList.add("is-animated");
+
+function snapSurgerySlide() {
+  surgeryMoving = false;
+  surgeryTrack.classList.remove("is-animated");
+  surgeryPosition = surgeryIndex + 1;
+  surgeryTrack.style.transform = `translate3d(-${surgeryPosition * 100}%, 0, 0)`;
+  void surgeryTrack.offsetWidth;
+  surgeryTrack.classList.add("is-animated");
+}
+
+function showSurgerySlide(index) {
+  if (surgeryMoving) return;
+  surgeryIndex = (index + surgerySlides.length) % surgerySlides.length;
+  surgeryPosition = index === -1 ? 0 : index === surgerySlides.length ? surgerySlides.length + 1 : surgeryIndex + 1;
+  if (reducedMotion.matches) snapSurgerySlide();
+  else {
+    surgeryMoving = true;
+    surgeryTrack.style.transform = `translate3d(-${surgeryPosition * 100}%, 0, 0)`;
+  }
+  surgerySlides.forEach((slide, slideIndex) => {
+    const active = slideIndex === surgeryIndex;
+    slide.classList.toggle("is-active", active);
+    slide.setAttribute("aria-hidden", String(!active));
+  });
+  surgeryCount.textContent = `${String(surgeryIndex + 1).padStart(2, "0")} / ${String(surgerySlides.length).padStart(2, "0")}`;
+}
+
+surgeryTrack.addEventListener("transitionend", (event) => {
+  if (event.target !== surgeryTrack || event.propertyName !== "transform" || !surgeryMoving) return;
+  if (surgeryPosition === 0 || surgeryPosition === surgerySlides.length + 1) snapSurgerySlide();
+  else surgeryMoving = false;
+});
+surgeryTrack.addEventListener("transitioncancel", () => { if (surgeryMoving) snapSurgerySlide(); });
+
+function stopSurgeryCarousel() {
+  window.clearInterval(surgeryTimer);
+  surgeryTimer = undefined;
+}
+function startSurgeryCarousel() {
+  stopSurgeryCarousel();
+  if (reducedMotion.matches || document.hidden || !surgeryVisible || surgeryControls.matches(":hover") || surgeryGallery.contains(document.activeElement)) return;
+  surgeryTimer = window.setInterval(() => showSurgerySlide(surgeryIndex + 1), 5500);
+}
+
+surgeryGallery.classList.add("carousel-ready");
+surgeryGallery.querySelector(".surgery-prev").addEventListener("click", () => { showSurgerySlide(surgeryIndex - 1); startSurgeryCarousel(); });
+surgeryGallery.querySelector(".surgery-next").addEventListener("click", () => { showSurgerySlide(surgeryIndex + 1); startSurgeryCarousel(); });
+surgeryControls.addEventListener("mouseenter", stopSurgeryCarousel);
+surgeryControls.addEventListener("mouseleave", startSurgeryCarousel);
+surgeryGallery.addEventListener("focusin", stopSurgeryCarousel);
+surgeryGallery.addEventListener("focusout", (event) => { if (!surgeryGallery.contains(event.relatedTarget)) startSurgeryCarousel(); });
+surgeryGallery.addEventListener("pointerdown", (event) => { if (event.pointerType === "touch") surgeryTouchX = event.clientX; });
+surgeryGallery.addEventListener("pointerup", (event) => {
+  if (surgeryTouchX === null) return;
+  const distance = event.clientX - surgeryTouchX;
+  surgeryTouchX = null;
+  if (Math.abs(distance) > 45) { showSurgerySlide(surgeryIndex + (distance < 0 ? 1 : -1)); startSurgeryCarousel(); }
+});
+surgeryGallery.addEventListener("pointercancel", () => { surgeryTouchX = null; });
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && surgeryMoving) snapSurgerySlide();
+  startSurgeryCarousel();
+});
+reducedMotion.addEventListener("change", () => {
+  if (reducedMotion.matches && surgeryMoving) snapSurgerySlide();
+  startSurgeryCarousel();
+});
+if ("IntersectionObserver" in window) {
+  const surgeryObserver = new IntersectionObserver(([entry]) => {
+    surgeryVisible = entry.isIntersecting;
+    if (!surgeryVisible && surgeryMoving) snapSurgerySlide();
+    startSurgeryCarousel();
+  }, { threshold: 0.1 });
+  surgeryObserver.observe(surgeryGallery);
+}
+startSurgeryCarousel();
+
+const ambientSections = document.querySelectorAll(".hero-copy, .section, .location-section, .contact-section");
+if ("IntersectionObserver" in window) {
+  const ambientObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle("ambient-active", entry.isIntersecting));
+  }, { rootMargin: "100px 0px" });
+  ambientSections.forEach((section) => ambientObserver.observe(section));
+} else {
+  ambientSections.forEach((section) => section.classList.add("ambient-active"));
+}
+
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.body.classList.add("motion-ready");
   const observer = new IntersectionObserver((entries) => {
