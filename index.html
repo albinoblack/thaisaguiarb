@@ -13,10 +13,9 @@
     <meta property="og:url" content="https://thaisaguiarb.vercel.app/" />
     <meta property="og:image" content="https://thaisaguiarb.vercel.app/assets/img/og-dra-thais.jpg" />
     <title>Dra. Thaís Aguiar | Otorrinolaringologia e Rinologia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href="assets/img/hero-jaleco.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/img/hero-jaleco.webp" imagesrcset="assets/img/hero-jaleco-480.webp 480w, assets/img/hero-jaleco-800.webp 800w, assets/img/hero-jaleco.webp 1280w" imagesizes="(max-width: 700px) calc(100vw - 20px), 47vw" fetchpriority="high" />
+    <link rel="preload" as="font" href="assets/fonts/cormorant-garamond.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="font" href="assets/fonts/manrope.woff2" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <script src="site-config.js" defer></script>
     <script src="script.js" defer></script>
@@ -25,7 +24,7 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-header" id="inicio">
       <div class="container header-inner">
-        <a class="brand" href="#inicio" aria-label="Dra. Thaís Aguiar, voltar ao início"><img class="brand-logo js-logo" src="assets/img/logo-thais-aguiar.png" alt="" width="536" height="527" aria-hidden="true" /><span class="brand-wordmark"><strong>Dra. Thaís Aguiar</strong><span>Otorrinolaringologia</span></span></a>
+        <a class="brand" href="#inicio" aria-label="Dra. Thaís Aguiar, voltar ao início"><img class="brand-logo js-logo" src="assets/img/logo-thais-aguiar.webp" alt="" width="536" height="527" aria-hidden="true" /><span class="brand-wordmark"><strong>Dra. Thaís Aguiar</strong><span>Otorrinolaringologia</span></span></a>
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="primary-menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav class="primary-nav" id="primary-menu" aria-label="Navegação principal">
           <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#tratamentos">Tratamentos</a><a href="#consulta">Consulta</a><a href="#instagram">Conteúdos</a><a href="#faq">FAQ</a><a href="#localizacao">Localização</a>
@@ -40,17 +39,18 @@
           <div class="hero-copy-inner">
             <p class="eyebrow eyebrow-light">Otorrinolaringologia · Rinologia</p>
             <h1 id="hero-title">Dra. Thaís Aguiar</h1>
-            <p class="hero-statement">Respirar bem muda a qualidade de vida.</p>
+            <p class="hero-statement">Respirar bem.<br /><em>Viver melhor.</em></p>
             <p class="hero-description">Cuidado especializado para respiração, nariz e seios da face.</p>
             <a class="button button-light js-booking" href="https://linktr.ee/thaisaguiarbrito" target="_blank" rel="noopener noreferrer">Agendar consulta <img class="whatsapp-icon" src="assets/img/whatsapp.svg" alt="" width="18" height="20" aria-hidden="true" /></a>
             <p class="hero-specialties">Otorrinolaringologia <span>·</span> Rinologia <span>·</span> Cirurgia Endoscópica Nasal</p>
           </div>
         </div>
         <div class="hero-photo hero-carousel" role="region" aria-roledescription="carrossel" aria-label="Retratos da Dra. Thaís Aguiar">
+          <div class="hero-photo-caption"><span>Cuidado que faz diferença</span><strong>Em cada respiração.</strong></div>
           <div class="hero-track">
-            <img class="hero-slide is-active" src="assets/img/hero-jaleco.webp" alt="Dra. Thaís Aguiar sorrindo, com jaleco branco" width="853" height="1280" fetchpriority="high" decoding="async" />
-            <img class="hero-slide hero-slide--close" src="assets/img/hero-close.webp" alt="Dra. Thaís Aguiar em retrato de jaleco branco" width="1200" height="800" loading="eager" fetchpriority="low" decoding="async" aria-hidden="true" />
-            <img class="hero-slide hero-slide--editorial" src="assets/img/hero-editorial.webp" alt="Dra. Thaís Aguiar sentada em retrato profissional" width="1200" height="800" loading="eager" fetchpriority="low" decoding="async" aria-hidden="true" />
+            <img class="hero-slide is-active" src="assets/img/hero-jaleco.webp" alt="Dra. Thaís Aguiar sorrindo, com jaleco branco" width="853" height="1280" fetchpriority="high" decoding="async" srcset="assets/img/hero-jaleco-480.webp 480w, assets/img/hero-jaleco-800.webp 800w, assets/img/hero-jaleco.webp 1280w" sizes="(max-width: 700px) calc(100vw - 20px), 47vw" />
+            <img class="hero-slide hero-slide--close" src="assets/img/hero-close.webp" alt="Dra. Thaís Aguiar em retrato de jaleco branco" width="1200" height="800" loading="eager" fetchpriority="low" decoding="async" aria-hidden="true" srcset="assets/img/hero-close-480.webp 480w, assets/img/hero-close-800.webp 800w, assets/img/hero-close.webp 1200w" sizes="(max-width: 700px) calc(100vw - 20px), 47vw" />
+            <img class="hero-slide hero-slide--editorial" src="assets/img/hero-editorial.webp" alt="Dra. Thaís Aguiar sentada em retrato profissional" width="1200" height="800" loading="eager" fetchpriority="low" decoding="async" aria-hidden="true" srcset="assets/img/hero-editorial-480.webp 480w, assets/img/hero-editorial-800.webp 800w, assets/img/hero-editorial.webp 1200w" sizes="(max-width: 700px) calc(100vw - 20px), 47vw" />
           </div>
           <div class="carousel-controls" aria-label="Controles das fotos">
             <button class="carousel-arrow carousel-prev" type="button" aria-label="Foto anterior" title="Foto anterior">‹</button>
@@ -61,13 +61,13 @@
         </div>
       </section>
 
-      <div class="intro-band" aria-label="Áreas de atuação"><div class="container intro-band-inner reveal"><span>Otorrinolaringologia</span><span>Rinologia</span><span>Cirurgia Endoscópica Nasal</span></div></div>
+      <div class="intro-band" aria-label="Áreas de atuação"><div class="container intro-band-inner reveal"><span>01 / Otorrinolaringologia</span><span>02 / Rinologia</span><span>03 / Cirurgia Endoscópica Nasal</span></div></div>
 
       <section class="section about-section" id="sobre" aria-labelledby="about-title">
         <div class="container about-layout">
-          <div class="about-photo reveal"><img src="assets/img/sobre-thais.webp" alt="Dra. Thaís Aguiar sentada, sorrindo em um retrato profissional" width="853" height="1280" loading="lazy" decoding="async" /><span class="photo-index">01 / Sobre a médica</span></div>
+          <div class="about-photo reveal"><img src="assets/img/sobre-thais.webp" alt="Dra. Thaís Aguiar sentada, sorrindo em um retrato profissional" width="853" height="1280" loading="lazy" decoding="async" srcset="assets/img/sobre-thais-480.webp 480w, assets/img/sobre-thais-800.webp 800w, assets/img/sobre-thais.webp 1000w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" /><span class="photo-index">01 / Sobre a médica</span></div>
           <div class="about-copy reveal">
-            <p class="eyebrow">Sobre a médica</p><h2 id="about-title">Escuta atenta. Conhecimento especializado.</h2>
+            <p class="eyebrow"><span class="chapter">01 /</span> Sobre a médica</p><h2 id="about-title">Escuta atenta.<br /><em>Cuidado singular.</em></h2>
             <p class="lead">A Dra. Thaís Aguiar une formação em otorrinolaringologia e aprofundamento em rinologia para investigar cada queixa com cuidado e orientar o tratamento mais adequado.</p>
             <p>Seu trabalho se concentra na saúde do nariz e dos seios da face, com atenção à respiração, ao sono e aos sintomas que afetam o dia a dia.</p>
             <div class="credentials" aria-label="Formação e vínculos profissionais">
@@ -83,7 +83,7 @@
 
       <section class="section treatments-section" id="tratamentos" aria-labelledby="treatments-title">
         <div class="container">
-          <div class="section-top reveal"><div><p class="eyebrow">Tratamentos e sintomas</p><h2 id="treatments-title">Quando a respiração pede atenção.</h2></div><p>Uma avaliação especializada ajuda a entender a origem dos sintomas e as possibilidades de tratamento.</p></div>
+          <div class="section-top reveal"><div><p class="eyebrow"><span class="chapter">02 /</span> Tratamentos e sintomas</p><h2 id="treatments-title">Quando a respiração pede atenção.</h2></div><p>Uma avaliação especializada ajuda a entender a origem dos sintomas e as possibilidades de tratamento.</p></div>
           <div class="treatment-grid">
             <article class="treatment reveal"><span>01</span><h3>Rinite e nariz entupido</h3><p>Investigação de sintomas alérgicos e obstrução nasal persistente.</p></article>
             <article class="treatment reveal"><span>02</span><h3>Sinusite e rinossinusite</h3><p>Cuidados para quadros recorrentes ou prolongados dos seios da face.</p></article>
@@ -97,13 +97,13 @@
       </section>
 
       <section class="section rinology-section" aria-labelledby="rinology-title"><div class="container rinology-layout">
-        <div class="rinology-copy reveal"><p class="eyebrow">Rinologia</p><h2 id="rinology-title">Entender a causa é o primeiro passo.</h2><p>O nariz e os seios da face participam de funções essenciais como respirar e perceber cheiros. Sintomas parecidos podem ter origens diferentes, por isso a avaliação individualizada faz diferença.</p><a class="text-link" href="#consulta">Conheça a consulta <span aria-hidden="true">↗</span></a></div>
-        <div class="rinology-photo reveal"><img src="assets/img/rinologia-anatomia.webp" alt="Dra. Thaís usa uma imagem da anatomia nasal em um tablet para explicar a região" width="567" height="850" loading="lazy" decoding="async" /></div>
+        <div class="rinology-copy reveal"><p class="eyebrow"><span class="chapter">03 /</span> Rinologia</p><h2 id="rinology-title">Cada detalhe<br /><em>importa.</em></h2><p>O nariz e os seios da face participam de funções essenciais como respirar e perceber cheiros. Sintomas parecidos podem ter origens diferentes, por isso a avaliação individualizada faz diferença.</p><a class="text-link" href="#consulta">Conheça a consulta <span aria-hidden="true">↗</span></a></div>
+        <div class="rinology-photo reveal"><img src="assets/img/rinologia-anatomia.webp" alt="Dra. Thaís usa uma imagem da anatomia nasal em um tablet para explicar a região" width="567" height="850" loading="lazy" decoding="async" srcset="assets/img/rinologia-anatomia-480.webp 480w, assets/img/rinologia-anatomia-800.webp 800w, assets/img/rinologia-anatomia.webp 850w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" /></div>
       </div></section>
 
       <section class="section consultation-section" id="consulta" aria-labelledby="consultation-title"><div class="container consultation-layout">
-        <div class="consultation-photo reveal"><img src="assets/img/consulta-otorrino.webp" alt="Dra. Thaís Aguiar examina o ouvido de uma paciente com um otoscópio" width="1000" height="667" loading="lazy" decoding="async" /></div>
-        <div class="consultation-copy reveal"><p class="eyebrow">A consulta</p><h2 id="consultation-title">Um cuidado que começa pela escuta.</h2><p>A consulta é o espaço para entender seus sintomas, investigar o que pode estar acontecendo e conversar sobre os próximos passos.</p>
+        <div class="consultation-photo reveal"><img src="assets/img/consulta-otorrino.webp" alt="Dra. Thaís Aguiar examina o ouvido de uma paciente com um otoscópio" width="1000" height="667" loading="lazy" decoding="async" srcset="assets/img/consulta-otorrino-480.webp 480w, assets/img/consulta-otorrino-800.webp 800w, assets/img/consulta-otorrino.webp 1000w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" /></div>
+        <div class="consultation-copy reveal"><p class="eyebrow"><span class="chapter">04 /</span> A consulta</p><h2 id="consultation-title">Um cuidado que começa pela escuta.</h2><p>A consulta é o espaço para entender seus sintomas, investigar o que pode estar acontecendo e conversar sobre os próximos passos.</p>
           <ol class="steps"><li><span>01</span><div><strong>Conversar</strong><p>História, sintomas e impacto na sua rotina.</p></div></li><li><span>02</span><div><strong>Avaliar</strong><p>Exame otorrinolaringológico conforme a necessidade clínica.</p></div></li><li><span>03</span><div><strong>Planejar</strong><p>Orientações e opções de cuidado adequadas ao seu caso.</p></div></li></ol>
           <a class="button button-dark js-booking" href="https://linktr.ee/thaisaguiarbrito" target="_blank" rel="noopener noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a>
         </div>
@@ -113,11 +113,11 @@
         <div class="surgery-copy reveal"><p class="eyebrow eyebrow-light">Atuação cirúrgica</p><h2 id="surgery-title">Experiência técnica em cirurgia endoscópica nasal.</h2><p>A formação em rinologia inclui a avaliação de situações em que um procedimento cirúrgico pode ser considerado. A indicação depende sempre de uma investigação cuidadosa e de uma conversa clara sobre cada caso.</p></div>
         <div class="surgery-gallery reveal" role="region" aria-roledescription="carrossel" aria-label="Fotos da atuação cirúrgica da Dra. Thaís">
           <div class="surgery-track">
-            <img class="surgery-slide is-active" src="assets/img/cirurgia-nasal-01.jpeg" alt="Dra. Thaís com equipamentos de cirurgia endoscópica nasal no centro cirúrgico" width="960" height="1280" loading="lazy" decoding="async" />
-            <img class="surgery-slide" src="assets/img/cirurgia-nasal-02.jpeg" alt="Dra. Thaís preparando o endoscópio para o procedimento" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" />
-            <img class="surgery-slide" src="assets/img/cirurgia-nasal-03.jpeg" alt="Dra. Thaís durante procedimento em sala cirúrgica" width="720" height="1280" loading="lazy" decoding="async" aria-hidden="true" />
-            <img class="surgery-slide" src="assets/img/cirurgia-nasal-04.jpeg" alt="Dra. Thaís concentrada durante cirurgia nasal" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" />
-            <img class="surgery-slide" src="assets/img/cirurgia-nasal-05.jpeg" alt="Dra. Thaís e equipe durante procedimento cirúrgico" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" />
+            <img class="surgery-slide is-active" src="assets/img/cirurgia-nasal-01.jpeg" alt="Dra. Thaís com equipamentos de cirurgia endoscópica nasal no centro cirúrgico" width="960" height="1280" loading="lazy" decoding="async" srcset="assets/img/cirurgia-nasal-01-480.webp 480w, assets/img/cirurgia-nasal-01-800.webp 800w, assets/img/cirurgia-nasal-01.jpeg 960w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" />
+            <img class="surgery-slide" src="assets/img/cirurgia-nasal-02.jpeg" alt="Dra. Thaís preparando o endoscópio para o procedimento" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" srcset="assets/img/cirurgia-nasal-02-480.webp 480w, assets/img/cirurgia-nasal-02-800.webp 800w, assets/img/cirurgia-nasal-02.jpeg 960w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" />
+            <img class="surgery-slide" src="assets/img/cirurgia-nasal-03.jpeg" alt="Dra. Thaís durante procedimento em sala cirúrgica" width="720" height="1280" loading="lazy" decoding="async" aria-hidden="true" srcset="assets/img/cirurgia-nasal-03-480.webp 480w, assets/img/cirurgia-nasal-03-800.webp 720w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" />
+            <img class="surgery-slide" src="assets/img/cirurgia-nasal-04.jpeg" alt="Dra. Thaís concentrada durante cirurgia nasal" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" srcset="assets/img/cirurgia-nasal-04-480.webp 480w, assets/img/cirurgia-nasal-04-800.webp 800w, assets/img/cirurgia-nasal-04.jpeg 960w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" />
+            <img class="surgery-slide" src="assets/img/cirurgia-nasal-05.jpeg" alt="Dra. Thaís e equipe durante procedimento cirúrgico" width="960" height="1280" loading="lazy" decoding="async" aria-hidden="true" srcset="assets/img/cirurgia-nasal-05-480.webp 480w, assets/img/cirurgia-nasal-05-800.webp 800w, assets/img/cirurgia-nasal-05.jpeg 960w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 940px) 45vw, 600px" />
           </div>
           <div class="surgery-controls" aria-label="Controles das fotos cirúrgicas">
             <button class="surgery-prev" type="button" aria-label="Foto cirúrgica anterior" title="Foto anterior">‹</button>
@@ -133,32 +133,62 @@
           <div class="instagram-grid">
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Reel</span><span>@peotorrinos</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DaycXqjj-pc/embed/" title="Prévia de reel de @peotorrinos — DaycXqjj-pc" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DaycXqjj-pc/embed/" data-embed-title="Prévia de reel de @peotorrinos — DaycXqjj-pc">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de reel de @peotorrinos — daycxqjj-pc">
+                  <img src="assets/img/instagram-DaycXqjj-pc.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/peotorrinos/reel/DaycXqjj-pc/" target="_blank" rel="noopener noreferrer">Assistir no Instagram <span aria-hidden="true">↗</span></a>
             </article>
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Reel</span><span>@peotorrinos</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DVlGErHjKff/embed/" title="Prévia de reel de @peotorrinos — DVlGErHjKff" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DVlGErHjKff/embed/" data-embed-title="Prévia de reel de @peotorrinos — DVlGErHjKff">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de reel de @peotorrinos — dvlgerhjkff">
+                  <img src="assets/img/instagram-DVlGErHjKff.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/peotorrinos/reel/DVlGErHjKff/" target="_blank" rel="noopener noreferrer">Assistir no Instagram <span aria-hidden="true">↗</span></a>
             </article>
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Publicação</span><span>@thaisaguiarb</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DL8ZoCeyAWZ/embed/" title="Prévia de publicação de @thaisaguiarb — DL8ZoCeyAWZ" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DL8ZoCeyAWZ/embed/" data-embed-title="Prévia de publicação de @thaisaguiarb — DL8ZoCeyAWZ">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de publicação de @thaisaguiarb — dl8zoceyawz">
+                  <img src="assets/img/instagram-DL8ZoCeyAWZ.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/thaisaguiarb/p/DL8ZoCeyAWZ/" target="_blank" rel="noopener noreferrer">Ver no Instagram <span aria-hidden="true">↗</span></a>
             </article>
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Publicação</span><span>@thaisaguiarb</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DKIelWPurBE/embed/" title="Prévia de publicação de @thaisaguiarb — DKIelWPurBE" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DKIelWPurBE/embed/" data-embed-title="Prévia de publicação de @thaisaguiarb — DKIelWPurBE">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de publicação de @thaisaguiarb — dkielwpurbe">
+                  <img src="assets/img/instagram-DKIelWPurBE.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/thaisaguiarb/p/DKIelWPurBE/" target="_blank" rel="noopener noreferrer">Ver no Instagram <span aria-hidden="true">↗</span></a>
             </article>
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Publicação</span><span>@thaisaguiarb</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DKxqf07uH-3/embed/" title="Prévia de publicação de @thaisaguiarb — DKxqf07uH-3" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DKxqf07uH-3/embed/" data-embed-title="Prévia de publicação de @thaisaguiarb — DKxqf07uH-3">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de publicação de @thaisaguiarb — dkxqf07uh-3">
+                  <img src="assets/img/instagram-DKxqf07uH-3.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/thaisaguiarb/p/DKxqf07uH-3/" target="_blank" rel="noopener noreferrer">Ver no Instagram <span aria-hidden="true">↗</span></a>
             </article>
             <article class="instagram-card reveal">
               <div class="instagram-card-top"><span class="instagram-format">Publicação</span><span>@thaisaguiarb</span></div>
-              <iframe class="instagram-preview" src="https://www.instagram.com/p/DHwipvaOKzs/embed/" title="Prévia de publicação de @thaisaguiarb — DHwipvaOKzs" width="400" height="560" loading="lazy" allow="encrypted-media; fullscreen" allowfullscreen></iframe>
+              <div class="instagram-media" data-embed-url="https://www.instagram.com/p/DHwipvaOKzs/embed/" data-embed-title="Prévia de publicação de @thaisaguiarb — DHwipvaOKzs">
+                <button class="instagram-load" type="button" aria-label="Carregar prévia de publicação de @thaisaguiarb — dhwipvaokzs">
+                  <img src="assets/img/instagram-DHwipvaOKzs.webp" alt="Capa da publicação no Instagram" width="600" height="800" loading="lazy" decoding="async" />
+                  <span class="instagram-load-label"><span aria-hidden="true">▷</span> Abrir prévia</span>
+                </button>
+              </div>
               <a class="instagram-card-link" href="https://www.instagram.com/thaisaguiarb/p/DHwipvaOKzs/" target="_blank" rel="noopener noreferrer">Ver no Instagram <span aria-hidden="true">↗</span></a>
             </article>
           </div>
@@ -178,10 +208,10 @@
 
       <section class="location-section" id="localizacao" aria-labelledby="location-title"><div class="container location-inner reveal"><div><p class="eyebrow">Localização</p><h2 id="location-title">Escolha o local mais conveniente para você.</h2><p>Os endereços e a disponibilidade de cada unidade podem ser confirmados no agendamento.</p><p class="location-address js-address" hidden></p></div><a class="text-link js-booking" href="https://linktr.ee/thaisaguiarbrito" target="_blank" rel="noopener noreferrer">Ver opções de atendimento <span aria-hidden="true">↗</span></a></div></section>
 
-      <section class="contact-section" id="contato" aria-labelledby="contact-title"><div class="container contact-inner reveal"><p class="eyebrow eyebrow-light">Vamos conversar?</p><h2 id="contact-title">Seu cuidado começa com uma boa conversa.</h2><p>Agende sua consulta e encontre o atendimento adequado para você.</p><a class="button button-light js-booking" href="https://linktr.ee/thaisaguiarbrito" target="_blank" rel="noopener noreferrer">Agendar consulta <img class="whatsapp-icon" src="assets/img/whatsapp.svg" alt="" width="18" height="20" aria-hidden="true" /></a></div></section>
+      <section class="contact-section" id="contato" aria-labelledby="contact-title"><div class="container contact-inner reveal"><p class="eyebrow eyebrow-light">Vamos conversar?</p><h2 id="contact-title">Vamos cuidar<br />da sua <em>respiração?</em></h2><p>Agende sua consulta e encontre o atendimento adequado para você.</p><a class="button button-light js-booking" href="https://linktr.ee/thaisaguiarbrito" target="_blank" rel="noopener noreferrer">Agendar consulta <img class="whatsapp-icon" src="assets/img/whatsapp.svg" alt="" width="18" height="20" aria-hidden="true" /></a></div></section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-inner"><div class="footer-identity"><img class="footer-logo js-logo" src="assets/img/logo-thais-aguiar.png" alt="" width="536" height="527" loading="lazy" aria-hidden="true" /><div class="footer-name"><strong>Dra. Thaís Aguiar</strong><span>Otorrinolaringologia · Rinologia</span><span class="js-registration" hidden></span></div></div><div><a class="js-instagram" href="https://www.instagram.com/thaisaguiarb/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#inicio">Voltar ao início ↑</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-inner"><div class="footer-identity"><img class="footer-logo js-logo" src="assets/img/logo-thais-aguiar.webp" alt="" width="536" height="527" loading="lazy" aria-hidden="true" /><div class="footer-name"><strong>Dra. Thaís Aguiar</strong><span>Otorrinolaringologia · Rinologia</span><span class="js-registration" hidden></span></div></div><div><a class="js-instagram" href="https://www.instagram.com/thaisaguiarb/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#inicio">Voltar ao início ↑</a></div></div></footer>
     <a class="whatsapp-float js-booking" href="https://wa.me/5581988863875" target="_blank" rel="noopener noreferrer" aria-label="Agendar consulta pelo WhatsApp" title="Agendar pelo WhatsApp"><img src="assets/img/whatsapp.svg" alt="" width="30" height="34" aria-hidden="true" /></a>
   </body>
 </html>

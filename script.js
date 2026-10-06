@@ -303,3 +303,21 @@ const schema = document.createElement("script");
 schema.type = "application/ld+json";
 schema.textContent = JSON.stringify(structuredData);
 document.head.appendChild(schema);
+
+// Keep Instagram scripts off the page until a visitor requests a specific post.
+document.querySelectorAll('.instagram-load').forEach((button) => {
+  button.addEventListener('click', () => {
+    const media = button.closest('.instagram-media');
+    if (media.querySelector('iframe')) return;
+    const frame = document.createElement('iframe');
+    frame.className = 'instagram-preview';
+    frame.title = media.dataset.embedTitle;
+    frame.width = '400';
+    frame.height = '560';
+    frame.allow = 'encrypted-media; fullscreen';
+    frame.allowFullscreen = true;
+    frame.src = media.dataset.embedUrl;
+    media.replaceChildren(frame);
+    frame.focus();
+  });
+});
